@@ -32,19 +32,13 @@ class odometry:
         # Default image file extension is 'png'
         self.imtype = kwargs.get('imtype', 'png')
 
-        # Flags to control which commands will run
-        self.load_poses = kwargs.get('poses', 'True')
-        self.load_calib = kwargs.get('calib', 'False')
-
         # Find all the data files
         self._get_file_lists()
 
         # Pre-load data that isn't returned as a generator
-        if self.load_calib:
-            self._load_calib()
-        if self.load_poses:
-            self._load_poses()
+        # self._load_calib()
         self._load_timestamps()
+        self._load_poses()
 
     def __len__(self):
         """Return the number of frames loaded."""
